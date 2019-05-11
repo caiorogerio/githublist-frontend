@@ -1,5 +1,8 @@
 import {Component, Input, OnInit} from '@angular/core';
+import {MatSnackBar} from '@angular/material';
+
 import {GithublistService} from '../githublist.service';
+import {ClipboardService} from '../clipboard.service';
 
 @Component({
   selector: 'app-repositories',
@@ -8,7 +11,11 @@ import {GithublistService} from '../githublist.service';
 })
 export class RepositoriesComponent implements OnInit {
 
-  constructor(private githublistService: GithublistService) { }
+  constructor(
+    private githublistService: GithublistService,
+    private clipboardService: ClipboardService,
+    private snackBar: MatSnackBar
+  ) { }
 
   repositories: object[];
   private _language = null;
@@ -28,6 +35,13 @@ export class RepositoriesComponent implements OnInit {
   }
 
   ngOnInit() {}
+
+  copyUrl(url) {
+    this.clipboardService.copyText(url);
+    this.snackBar.open('Text copied','', {
+      duration: 2000
+    });
+  }
 
 
 

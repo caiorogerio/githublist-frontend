@@ -3,6 +3,8 @@
 /*@import "~@angular/material/prebuilt-themes/indigo-pink.css";*/
 
 @import "https://cdn.rawgit.com/konpa/devicon/df6431e323547add1b4cf45992913f15286456d3/devicon.min.css";
+@import "https://fonts.googleapis.com/css?family=Roboto|Roboto+Condensed:300|Roboto+Mono:300&subset=cyrillic-ext";
+@import "https://fonts.googleapis.com/icon?family=Material+Icons";
 
 body {
   margin: 0;
@@ -27,6 +29,16 @@ mat-toolbar .fill-remaining-space {
   left: 0;
   right: 0;
   z-index: 6;
+
+  font-family: "Roboto Condensed", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 200;
+  font-size: 22px;
+  line-height: 26px;
+}
+
+#header .devicon-github-plain {
+  font-size: 26px;
+  line-height: 26px;
 }
 
 app-language mat-list {
@@ -84,10 +96,11 @@ app-repositories mat-card.mat-card mat-card-header {
 
 app-repositories mat-card.mat-card mat-card-header .mat-card-header-text {
   flex-grow: 1;
+  max-width: 200px;
 }
 
 app-repositories mat-card.mat-card mat-card-header mat-card-title.mat-card-title {
-  font-size: 16px;
+  /*font-size: 16px;*/
 }
 
 app-repositories mat-card.mat-card mat-card-actions.mat-card-actions {
@@ -101,6 +114,11 @@ app-repositories mat-card.mat-card mat-card-actions.mat-card-actions {
 
 app-repositories mat-card.mat-card mat-card-actions.mat-card-actions mat-form-field {
   flex-grow: 1;
+}
+
+app-repositories mat-card.mat-card mat-card-actions.mat-card-actions mat-form-field .mat-input-element {
+  font-family: "Roboto Mono", Roboto, "Helvetica Neue", sans-serif;
+  font-weight: 300;
 }
 
 #footer {

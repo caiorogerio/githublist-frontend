@@ -17,8 +17,8 @@
       <a mat-button [href]="repository.link">VISIT</a>
 
       <mat-form-field class="clone">
-        <input matInput type="text" placeholder="Clone" [value]="repository.git">
-        <button mat-button matSuffix mat-icon-button>
+        <input matInput type="text" placeholder="Clone" [value]="repository.git" (click)="copyUrl(repository.git)" readonly>
+        <button mat-button matSuffix mat-icon-button (click)="copyUrl(repository.git)">
           <mat-icon>file_copy</mat-icon>
         </button>
       </mat-form-field>
