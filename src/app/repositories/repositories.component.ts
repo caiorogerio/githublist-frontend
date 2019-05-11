@@ -15,7 +15,6 @@ export class RepositoriesComponent implements OnInit {
 
   @Input()
   set language(language) {
-    console.log("repositories", language);
     if(language) {
       this.githublistService.getLanguage(language.url)
         .subscribe(

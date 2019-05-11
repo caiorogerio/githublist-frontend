@@ -10,7 +10,6 @@ export class AppComponent {
   language = null;
 
   selectLanguage(language) {
-    console.log("app", language);
     this.language = language;
   }
 }

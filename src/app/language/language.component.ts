@@ -21,12 +21,11 @@ export class LanguageComponent implements OnInit {
   writeLanguages() {
     this.githublistService.getLanguages()
       .subscribe(
-        (response: object) => this.languages = response.results
+        (response: object) => this.languages = response['results']
       );
   }
 
   selectLanguage(language) {
-    console.log("language", language);
     this.select.emit(language);
   }
 
