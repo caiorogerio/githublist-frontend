@@ -1,0 +1,31 @@
+<div id="language-repositories" *ngIf="language">
+  <mat-card class="repository" color="accent" *ngFor="let repository of language.repositories">
+    <mat-card-header>
+      <img mat-card-avatar [src]="repository.owner.avatar">
+      <mat-card-title>{{ repository.name }}</mat-card-title>
+      <mat-card-subtitle>{{ repository.owner.name }}</mat-card-subtitle>
+      <mat-chip-list align="end">
+        <mat-chip color="accent" class="mat-small"><mat-icon>star_rate</mat-icon> {{ repository.stars }}</mat-chip>
+        <mat-chip color="accent" class="mat-small"><mat-icon>call_split</mat-icon> {{ repository.forks }}</mat-chip>
+      </mat-chip-list>
+
+    </mat-card-header>
+    <mat-card-content>
+      <p>{{ repository.description }}</p>
+    </mat-card-content>
+    <mat-card-actions>
+      <a mat-button [href]="repository.link">VISIT</a>
+
+      <mat-form-field class="clone">
+        <input matInput type="text" placeholder="Clone" [value]="repository.git">
+        <button mat-button matSuffix mat-icon-button>
+          <mat-icon>file_copy</mat-icon>
+        </button>
+      </mat-form-field>
+    </mat-card-actions>
+  </mat-card>
+</div>
+
+<div id="language-repositories-click-info" class="mat-caption" color="accent" *ngIf="!language">
+  <p>Click on one of the languages by side</p>
+</div>

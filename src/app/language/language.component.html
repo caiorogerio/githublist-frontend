@@ -1,7 +1,9 @@
-<aside id="language">
-  <h2>Languages</h2>
+<mat-list id="languages">
+  <h3 mat-subheader>Languages</h3>
 
-  <ul>
-    <li *ngFor="let language of languages" (click)="selectLanguage(language)">{{ language.name }}</li>
-  </ul>
-</aside>
+  <mat-list-item *ngFor="let language of languages">
+    <a mat-button mat-line [matBadge]="language.repositories_number" matBadgeColor="warn" matBadgeOverlap="false" align="start" (click)="selectLanguage(language)">
+      <i class="devicon-{{ language.name | lowercase }}-plain"></i> {{ language.name }}
+    </a>
+  </mat-list-item>
+</mat-list>

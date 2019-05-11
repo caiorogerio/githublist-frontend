@@ -1,0 +1,7 @@
+.repository {
+  width: 400px;
+}
+
+.repository mat-card-header mat-chip-list {
+  float: right;
+}

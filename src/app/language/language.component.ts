@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import {Component, EventEmitter, OnInit, Output} from '@angular/core';
 
 import { GithublistService } from '../githublist.service';
-import {Observable} from 'rxjs';
 
 @Component({
   selector: 'app-language',
@@ -12,18 +11,23 @@ export class LanguageComponent implements OnInit {
 
   constructor(private githublistService: GithublistService) { }
 
-  languages: Observable<Object>;
+  languages: object[];
+  @Output() select = new EventEmitter();
 
   ngOnInit() {
-    this.getLanguages();
+    this.writeLanguages();
   }
 
-  getLanguages() {
-    this.languages = this.githublistService.getLanguages();
+  writeLanguages() {
+    this.githublistService.getLanguages()
+      .subscribe(
+        (response: object) => this.languages = response.results
+      );
   }
 
   selectLanguage(language) {
-
+    console.log("language", language);
+    this.select.emit(language);
   }
 
 }

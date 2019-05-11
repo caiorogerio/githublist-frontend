@@ -1,5 +1,4 @@
 import { Component } from '@angular/core';
-import {FormControl} from '@angular/forms';
 
 @Component({
   selector: 'app-root',
@@ -8,5 +7,10 @@ import {FormControl} from '@angular/forms';
 })
 export class AppComponent {
   title = 'app';
-  mode = new FormControl('over');
+  language = null;
+
+  selectLanguage(language) {
+    console.log("app", language);
+    this.language = language;
+  }
 }
