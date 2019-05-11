@@ -1,0 +1,7 @@
+<aside id="language">
+  <h2>Languages</h2>
+
+  <ul>
+    <li *ngFor="let language of languages" (click)="selectLanguage(language)">{{ language.name }}</li>
+  </ul>
+</aside>
