@@ -27,7 +27,7 @@ export class GithublistService {
       this.loading.emit(false);
     }
 
-    return this._callsOnLoading = callsOnLoading;
+    this._callsOnLoading = callsOnLoading;
   }
 
   get host() {
@@ -63,8 +63,4 @@ export class GithublistService {
   isApiUrl(url) {
     return url.indexOf && url.indexOf(this.host) === 0;
   }
-}
-
-export class GithublistObservable {
-  subscribe()
 }
