@@ -1,5 +1,5 @@
 <mat-toolbar color="primary" class="mat-elevation-z6" id="header">
-  <button mat-button (click)="closed = !closed">
+  <button mat-button (click)="toggleNav()">
     <mat-icon>menu</mat-icon>
   </button>
   <span><i class="devicon-github-plain"></i> GitHub List</span>
@@ -10,7 +10,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container id="container">
-  <mat-sidenav mode="side" position="start" [opened]="!closed" fixedInViewport="true" fixedTopGap="64" class="mat-elevation-z5">
+  <mat-sidenav mode="side" position="start" [opened]="opened" fixedInViewport="true" fixedTopGap="64" class="mat-elevation-z5">
       <app-language (select)="selectLanguage($event)"></app-language>
   </mat-sidenav>
 

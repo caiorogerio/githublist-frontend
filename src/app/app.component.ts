@@ -9,6 +9,7 @@ import {GithublistService} from './githublist.service';
 export class AppComponent {
   language = null;
   loading = false;
+  opened = true;
 
   constructor(private githublistService: GithublistService) {
     this.githublistService.loading.subscribe(event => this.loading = event);
@@ -16,5 +17,9 @@ export class AppComponent {
 
   selectLanguage(language) {
     this.language = language;
+  }
+
+  toggleNav() {
+    this.opened = !this.opened;
   }
 }
