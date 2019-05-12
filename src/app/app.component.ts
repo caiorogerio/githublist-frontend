@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import {GithublistService} from './githublist.service';
 
 @Component({
   selector: 'app-root',
@@ -6,8 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'app';
   language = null;
+  loading = false;
+
+  constructor(private githublistService: GithublistService) {
+    this.githublistService.loading.subscribe(event => this.loading = event);
+  }
 
   selectLanguage(language) {
     this.language = language;

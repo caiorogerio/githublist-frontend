@@ -1,4 +1,7 @@
 <mat-toolbar color="primary" class="mat-elevation-z6" id="header">
+  <button mat-button (click)="closed = !closed">
+    <mat-icon>menu</mat-icon>
+  </button>
   <span><i class="devicon-github-plain"></i> GitHub List</span>
   <span class="fill-remaining-space">
     <img src="https://ateliware.com.br/assets/images/logo.png" alt="Ateliware" height="20">
@@ -7,7 +10,7 @@
 </mat-toolbar>
 
 <mat-sidenav-container id="container">
-  <mat-sidenav mode="side" position="start" [opened]="true" fixedInViewport="true" fixedTopGap="64" class="mat-elevation-z5">
+  <mat-sidenav mode="side" position="start" [opened]="!closed" fixedInViewport="true" fixedTopGap="64" class="mat-elevation-z5">
       <app-language (select)="selectLanguage($event)"></app-language>
   </mat-sidenav>
 
@@ -19,3 +22,5 @@
     </mat-toolbar>
   </mat-sidenav-content>
 </mat-sidenav-container>
+
+<mat-progress-bar *ngIf="loading" id="loading" color="primary" mode="indeterminate"></mat-progress-bar>

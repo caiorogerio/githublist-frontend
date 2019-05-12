@@ -14,10 +14,11 @@ import {MatFormFieldModule} from '@angular/material/form-field';
 import {MatBadgeModule} from '@angular/material/badge';
 import {MatGridListModule} from '@angular/material/grid-list';
 import {MatSnackBarModule} from '@angular/material/snack-bar';
+import {MatIconModule} from '@angular/material';
+import {MatProgressBarModule} from '@angular/material/progress-bar';
 
 import { AppComponent } from './app.component';
 import { LanguageComponent } from './language/language.component';
-import {MatIconModule} from '@angular/material';
 import { RepositoriesComponent } from './repositories/repositories.component';
 
 @NgModule({
@@ -43,6 +44,7 @@ import { RepositoriesComponent } from './repositories/repositories.component';
     MatBadgeModule,
     MatGridListModule,
     MatSnackBarModule,
+    MatProgressBarModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

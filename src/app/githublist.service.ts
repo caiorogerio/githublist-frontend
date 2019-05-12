@@ -1,6 +1,7 @@
-import { Injectable } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+import {EventEmitter, Injectable} from '@angular/core';
+import {HttpClient} from '@angular/common/http';
 import {environment} from '../environments/environment';
+import {Observable} from 'rxjs';
 
 
 
@@ -11,12 +12,39 @@ export class GithublistService {
 
   constructor(private http: HttpClient) { }
 
+  loading: EventEmitter<any> = new EventEmitter();
+
+  private _callsOnLoading = 0;
+
+  private get callsOnLoading() {
+    return this._callsOnLoading;
+  }
+
+  private set callsOnLoading(callsOnLoading) {
+    if(callsOnLoading===1) {
+      this.loading.emit(true);
+    } else if(callsOnLoading===0) {
+      this.loading.emit(false);
+    }
+
+    return this._callsOnLoading = callsOnLoading;
+  }
+
   get host() {
     return environment.githublist.host;
   }
 
   call(path) {
-    return this.http.get(this.host + path.replace(/^\/+/, ''));
+    let observable: Observable<any>;
+
+    this.callsOnLoading++;
+
+    observable = this.http.get(this.host + path.replace(/^\/+/, ''));
+    observable.subscribe({
+      complete: () => this.callsOnLoading--
+    });
+
+    return observable;
   }
 
   getLanguages() {
@@ -35,4 +63,8 @@ export class GithublistService {
   isApiUrl(url) {
     return url.indexOf && url.indexOf(this.host) === 0;
   }
+}
+
+export class GithublistObservable {
+  subscribe()
 }
