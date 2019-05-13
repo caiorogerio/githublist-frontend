@@ -1,5 +1,5 @@
-<div id="language-repositories" *ngIf="language">
-  <mat-card class="repository" color="accent" *ngFor="let repository of language.repositories">
+<div id="language-repositories">
+  <mat-card class="repository" color="accent" *ngFor="let repository of repositories">
     <mat-card-header>
       <img mat-card-avatar [src]="repository.owner.avatar">
       <mat-card-title>{{ repository.name }}</mat-card-title>
@@ -24,8 +24,4 @@
       </mat-form-field>
     </mat-card-actions>
   </mat-card>
-</div>
-
-<div id="language-repositories-click-info" class="mat-caption" color="accent" *ngIf="!language">
-  <p>Click on one of the languages by side</p>
 </div>

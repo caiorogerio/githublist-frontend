@@ -20,16 +20,24 @@ import {MatProgressBarModule} from '@angular/material/progress-bar';
 import { AppComponent } from './app.component';
 import { LanguageComponent } from './language/language.component';
 import { RepositoriesComponent } from './repositories/repositories.component';
+import { AppRoutingModule } from './app-routing.module';
+import { LanguagesIndexComponent } from './languages-index/languages-index.component';
+import { PageNotFoundComponent } from './page-not-found/page-not-found.component';
+import { GetLinkPipe } from './get-link.pipe';
 
 @NgModule({
   declarations: [
     AppComponent,
     LanguageComponent,
-    RepositoriesComponent
+    RepositoriesComponent,
+    LanguagesIndexComponent,
+    PageNotFoundComponent,
+    GetLinkPipe
   ],
   imports: [
     BrowserModule,
     HttpClientModule,
+    AppRoutingModule,
 
     BrowserAnimationsModule,
     MatToolbarModule,
@@ -45,6 +53,7 @@ import { RepositoriesComponent } from './repositories/repositories.component';
     MatGridListModule,
     MatSnackBarModule,
     MatProgressBarModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

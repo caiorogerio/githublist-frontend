@@ -3,6 +3,7 @@ import {MatSnackBar} from '@angular/material';
 
 import {GithublistService} from '../githublist.service';
 import {ClipboardService} from '../clipboard.service';
+import {ActivatedRoute} from '@angular/router';
 
 @Component({
   selector: 'app-repositories',
@@ -14,27 +15,24 @@ export class RepositoriesComponent implements OnInit {
   constructor(
     private githublistService: GithublistService,
     private clipboardService: ClipboardService,
-    private snackBar: MatSnackBar
+    private snackBar: MatSnackBar,
+    private route: ActivatedRoute
   ) { }
 
   repositories: object[];
-  private _language = null;
 
-  @Input()
-  set language(language) {
-    if(language) {
-      this.githublistService.getLanguage(language.url)
-        .subscribe(
-          (response: object) => this._language = response
-        );
-    }
+  ngOnInit() {
+    this.route.paramMap.subscribe(
+      (params) => {
+        this.githublistService.getLanguage(params.get('id'))
+          .subscribe(
+            (language) => {
+              this.repositories = language.repositories;
+            }
+          )
+      }
+    )
   }
-
-  get language() {
-    return this._language;
-  }
-
-  ngOnInit() {}
 
   copyUrl(url) {
     this.clipboardService.copyText(url);

@@ -63,4 +63,10 @@ export class GithublistService {
   isApiUrl(url) {
     return url.indexOf && url.indexOf(this.host) === 0;
   }
+
+  getPath(value) {
+    if(!value.url) return null;
+
+    return '/' + value.url.replace(this.host, '').replace(/^\/+/, '');
+  }
 }
